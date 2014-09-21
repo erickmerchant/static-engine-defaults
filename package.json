@@ -1,0 +1,19 @@
+{
+  "name": "static-engine-defaults",
+  "version": "1.0.0",
+  "description": "Middleware for static-engine.",
+  "main": "index.js",
+  "repository": "erickmerchant/static-engine-defaults",
+  "author": "Erick Merchant <erickmerchant@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/erickmerchant/static-engine-defaults/issues"
+  },
+  "homepage": "https://github.com/erickmerchant/static-engine-defaults",
+  "dependencies": {
+    "interpolate": "^0.1.0",
+    "js-yaml": "^3.1.0",
+    "lodash": "^2.4.1",
+    "moment": "^2.7.0"
+  }
+}

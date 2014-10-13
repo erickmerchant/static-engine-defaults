@@ -1,9 +1,12 @@
 {
   "name": "static-engine-defaults",
-  "version": "1.0.0",
-  "description": "Middleware for static-engine.",
+  "version": "2.0.0",
+  "description": "Middleware for static-engine. Reads defaults for elements in the collection from a yaml file. Also adds a route method and a now property to each element.",
   "main": "index.js",
   "repository": "erickmerchant/static-engine-defaults",
+  "keywords": [
+      "static-engine"
+  ],
   "author": "Erick Merchant <erickmerchant@gmail.com>",
   "license": "MIT",
   "bugs": {
@@ -13,7 +16,7 @@
   "dependencies": {
     "interpolate": "^0.1.0",
     "js-yaml": "^3.1.0",
-    "lodash": "^2.4.1",
-    "moment": "^2.7.0"
+    "moment": "^2.7.0",
+    "object-assign": "^1.0.0"
   }
 }

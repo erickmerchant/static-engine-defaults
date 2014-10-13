@@ -1,16 +1,16 @@
 var yaml = require('js-yaml');
 var fs = require('fs');
-var _ = require('lodash');
 var interpolate = require('interpolate');
 var moment = require('moment');
+var assign = require('object-assign');
 
 module.exports = function (app, default_file) {
 
     var route = function (name, args) {
 
-        if (!_.has(app.routes, name) || !app.routes[name].route || !args) return '';
+        if (!app.routes.hasOwnProperty(name) || !app.routes[name].route) return '';
 
-        return interpolate(app.routes[name].route, args);
+        return interpolate(app.routes[name].route, args || {});
     };
 
     var now = moment();
@@ -27,9 +27,9 @@ module.exports = function (app, default_file) {
 
             defaults.now = now;
 
-            _.each(pages, function (val, key) {
+            pages.forEach(function (val, key) {
 
-                pages[key] = _.assign(val, defaults);
+                pages[key] = assign(val, defaults);
             });
 
             next(pages);

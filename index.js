@@ -17,9 +17,7 @@ module.exports = function (app, default_file) {
 
     return function (pages, next) {
 
-        fs.readFile(default_file, {
-            encoding: 'utf-8'
-        }, function (err, data) {
+        fs.readFile(default_file, { encoding: 'utf-8' }, function (err, data) {
 
             var defaults = yaml.load(data);
 

@@ -1,7 +1,7 @@
 {
   "name": "static-engine-defaults",
   "version": "2.0.0",
-  "description": "Middleware for static-engine. Reads defaults for elements in the collection from a yaml file. Also adds a route method and a now property to each element.",
+  "description": "Plugin for static-engine. Reads defaults for elements in the collection from a yaml file. Also adds a route method and a now property to each element.",
   "main": "index.js",
   "repository": "erickmerchant/static-engine-defaults",
   "keywords": [
@@ -18,5 +18,8 @@
     "js-yaml": "^3.1.0",
     "moment": "^2.7.0",
     "object-assign": "^1.0.0"
+  },
+  "peerDependencies": {
+    "static-engine": "^2.0.0"
   }
 }

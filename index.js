@@ -27,7 +27,7 @@ module.exports = function (app, default_file) {
 
             pages.forEach(function (val, key) {
 
-                pages[key] = assign(val, defaults);
+                pages[key] = assign({}, defaults, val);
             });
 
             next(pages);

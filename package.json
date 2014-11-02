@@ -1,11 +1,11 @@
 {
   "name": "static-engine-defaults",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Plugin for static-engine. Reads defaults for elements in the collection from a yaml file. Also adds a route method and a now property to each element.",
   "main": "index.js",
   "repository": "erickmerchant/static-engine-defaults",
   "keywords": [
-      "static-engine"
+    "static-engine"
   ],
   "author": "Erick Merchant <erickmerchant@gmail.com>",
   "license": "MIT",

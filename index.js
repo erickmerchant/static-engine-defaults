@@ -1,21 +1,25 @@
 var yaml = require('js-yaml');
 var fs = require('fs');
 var assign = require('object-assign');
+var Promise = require('es6-promise').Promise;
 
 module.exports = function (default_file) {
 
-    return function (pages, next) {
+    return function (pages) {
 
-        fs.readFile(default_file, { encoding: 'utf-8' }, function (err, data) {
+        return new Promise(function(resolve, reject){
 
-            var defaults = yaml.load(data);
+            fs.readFile(default_file, { encoding: 'utf-8' }, function (err, data) {
 
-            pages.forEach(function (val, key) {
+                var defaults = yaml.load(data);
 
-                pages[key] = assign({}, defaults, val);
+                pages.forEach(function (val, key) {
+
+                    pages[key] = assign({}, defaults, val);
+                });
+
+                resolve(pages);
             });
-
-            next(pages);
         });
     };
 };

@@ -1,6 +1,6 @@
 {
   "name": "static-engine-defaults",
-  "version": "4.2.0",
+  "version": "5.0.0",
   "description": "Plugin for static-engine. Reads defaults for elements in the collection from a yaml file.",
   "main": "index.js",
   "repository": "erickmerchant/static-engine-defaults",

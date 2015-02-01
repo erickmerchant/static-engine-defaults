@@ -15,7 +15,7 @@ describe('plugin', function(){
 
         var plugin = defaults('./test/content/defaults.yaml');
 
-        plugin([{}, {}, {}]).then(function(pages){
+        plugin([{}, {}, {}], function(err, pages){
 
             assert.deepEqual(pages, [
                 {alpha: 'a', beta: 'b', gamma: 'c'},
@@ -31,7 +31,7 @@ describe('plugin', function(){
 
         var plugin = defaults('./test/content/defaults.yaml');
 
-        plugin([{alpha: 1}, {beta: 2}, {gamma: 3}]).then(function(pages){
+        plugin([{alpha: 1}, {beta: 2}, {gamma: 3}], function(err, pages){
 
             assert.deepEqual(pages, [
                 {alpha: 1, beta: 'b', gamma: 'c'},

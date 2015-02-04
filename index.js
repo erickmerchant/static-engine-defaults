@@ -8,14 +8,20 @@ module.exports = function (default_file) {
 
         fs.readFile(default_file, { encoding: 'utf-8' }, function (err, data) {
 
-            var defaults = yaml.load(data);
+            if(err) {
+                done(err);
+            }
+            else {
 
-            pages.forEach(function (val, key) {
+                var defaults = yaml.load(data);
 
-                pages[key] = assign({}, defaults, val);
-            });
+                pages.forEach(function (val, key) {
 
-            done(null, pages);
+                    pages[key] = assign({}, defaults, val);
+                });
+
+                done(null, pages);
+            }
         });
     };
 };

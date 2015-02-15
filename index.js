@@ -2,7 +2,15 @@ var yaml = require('js-yaml');
 var fs = require('fs');
 var assign = require('object-assign');
 
-module.exports = function (default_file) {
+module.exports = function (default_file, converter) {
+
+    if(typeof converter == 'undefined') {
+
+        converter = function(content) {
+
+            return yaml.load(content);
+        }
+    }
 
     return function (pages, done) {
 
@@ -13,7 +21,7 @@ module.exports = function (default_file) {
             }
             else {
 
-                var defaults = yaml.load(data);
+                var defaults = converter(data);
 
                 pages.forEach(function (val, key) {
 

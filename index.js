@@ -16,19 +16,28 @@ module.exports = function (default_file, converter) {
 
         fs.readFile(default_file, { encoding: 'utf-8' }, function (err, data) {
 
+            var defaults;
+
             if(err) {
                 done(err);
             }
             else {
 
-                var defaults = converter(data);
+                try {
 
-                pages.forEach(function (val, key) {
+                    defaults = converter(data);
 
-                    pages[key] = assign({}, defaults, val);
-                });
+                    pages.forEach(function (val, key) {
 
-                done(null, pages);
+                        pages[key] = assign({}, defaults, val);
+                    });
+
+                    done(null, pages);
+                }
+                catch(e) {
+
+                    done(e);
+                }
             }
         });
     };

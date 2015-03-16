@@ -2,7 +2,7 @@ var yaml = require('js-yaml');
 var fs = require('fs');
 var assign = require('object-assign');
 
-module.exports = function (default_file, converter) {
+module.exports = function (defaultFile, converter) {
 
     if(typeof converter == 'undefined') {
 
@@ -14,7 +14,7 @@ module.exports = function (default_file, converter) {
 
     return function (pages, done) {
 
-        fs.readFile(default_file, { encoding: 'utf-8' }, function (err, data) {
+        fs.readFile(defaultFile, { encoding: 'utf-8' }, function (err, data) {
 
             var defaults;
 

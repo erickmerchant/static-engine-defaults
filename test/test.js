@@ -1,5 +1,5 @@
 var mock = require('mock-fs');
-var assert = require('chai').assert;
+var assert = require('assert');
 var defaults = require('../index.js');
 
 beforeEach(function() {

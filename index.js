@@ -1,16 +1,7 @@
-var yaml = require('js-yaml');
 var fs = require('fs');
 var assign = require('object-assign');
 
 module.exports = function (defaultFile, converter) {
-
-    if(typeof converter == 'undefined') {
-
-        converter = function(content) {
-
-            return yaml.load(content);
-        }
-    }
 
     return function (pages, done) {
 

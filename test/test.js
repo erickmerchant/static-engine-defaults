@@ -5,7 +5,7 @@ var defaults = require('../index.js');
 beforeEach(function() {
 
     mock({
-        './test/content/defaults.json': '{ "alpha": "a", "beta": "b", "gamma": "c" }'
+        './test/content/defaults.json': '{ "alpha": "a", "beta": "b" }'
     });
 });
 
@@ -15,12 +15,11 @@ describe('plugin', function(){
 
         var plugin = defaults('./test/content/defaults.json', JSON.parse);
 
-        plugin([{}, {}, {}], function(err, pages){
+        plugin([{}, {}], function(err, pages){
 
             assert.deepEqual(pages, [
-                {alpha: 'a', beta: 'b', gamma: 'c'},
-                {alpha: 'a', beta: 'b', gamma: 'c'},
-                {alpha: 'a', beta: 'b', gamma: 'c'}
+                {alpha: 'a', beta: 'b'},
+                {alpha: 'a', beta: 'b'}
             ]);
 
             done();
@@ -31,12 +30,11 @@ describe('plugin', function(){
 
         var plugin = defaults('./test/content/defaults.json', JSON.parse);
 
-        plugin([{alpha: 1}, {beta: 2}, {gamma: 3}], function(err, pages){
+        plugin([{alpha: 1}, {alpha: 2}], function(err, pages){
 
             assert.deepEqual(pages, [
-                {alpha: 1, beta: 'b', gamma: 'c'},
-                {alpha: 'a', beta: 2, gamma: 'c'},
-                {alpha: 'a', beta: 'b', gamma: 3}
+                {alpha: 1, beta: 'b'},
+                {alpha: 2, beta: 'b'},
             ]);
 
             done();

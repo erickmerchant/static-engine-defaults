@@ -19,5 +19,8 @@
   "devDependencies": {
     "mocha": "^2.0.0",
     "mock-fs": "^2.3.2"
+  },
+  "scripts": {
+    "test": "mocha"
   }
 }

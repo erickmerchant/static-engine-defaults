@@ -1,6 +1,6 @@
 {
   "name": "static-engine-defaults",
-  "version": "6.1.1",
+  "version": "6.1.2",
   "description": "Plugin for static-engine. Reads defaults for objects in the collection from a file and uses a converter that you define like JSON.parse.",
   "main": "index.js",
   "repository": "erickmerchant/static-engine-defaults",

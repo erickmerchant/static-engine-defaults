@@ -13,7 +13,7 @@ var pluginA = require('plugin-a');
 
 engine([
     pluginA,
-    defaults('./content/defaults.cson', cson.parse);
+    defaults('./content/defaults.cson', cson.parse)
 ]);
 
 ```

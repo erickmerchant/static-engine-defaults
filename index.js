@@ -1,35 +1,26 @@
-var fs = require('fs');
-var assign = require('object-assign');
+var fs = require('fs')
+var assign = require('object-assign')
 
 module.exports = function (defaultFile, converter) {
+  return function (pages, done) {
+    fs.readFile(defaultFile, { encoding: 'utf-8' }, function (err, data) {
+      var defaults
 
-    return function (pages, done) {
+      if (err) {
+        done(err)
+      } else {
+        try {
+          defaults = converter(data)
 
-        fs.readFile(defaultFile, { encoding: 'utf-8' }, function (err, data) {
+          pages.forEach(function (val, key) {
+            pages[key] = assign({}, defaults, val)
+          })
 
-            var defaults;
-
-            if(err) {
-                done(err);
-            }
-            else {
-
-                try {
-
-                    defaults = converter(data);
-
-                    pages.forEach(function (val, key) {
-
-                        pages[key] = assign({}, defaults, val);
-                    });
-
-                    done(null, pages);
-                }
-                catch(e) {
-
-                    done(e);
-                }
-            }
-        });
-    };
-};
+          done(null, pages)
+        } catch(e) {
+          done(e)
+        }
+      }
+    })
+  }
+}

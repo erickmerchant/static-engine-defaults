@@ -1,43 +1,48 @@
-var mock = require('mock-fs');
-var assert = require('assert');
-var defaults = require('../index.js');
+var mock = require('mock-fs')
+var assert = require('assert')
+var describe = require('mocha').describe
+var it = require('mocha').it
+var beforeEach = require('mocha').beforeEach
+var defaults = require('../index.js')
 
-beforeEach(function() {
+beforeEach(function () {
+  mock({
+    './test/content/defaults.json': '{ "alpha": "a", "beta": "b" }'
+  })
+})
 
-    mock({
-        './test/content/defaults.json': '{ "alpha": "a", "beta": "b" }'
-    });
-});
+describe('plugin', function () {
+  it('it should affect all pages', function (done) {
+    var plugin = defaults('./test/content/defaults.json', JSON.parse)
 
-describe('plugin', function(){
+    plugin([{}, {}], function (err, pages) {
+      if (err) {
+        throw err
+      }
 
-    it('it should affect all pages', function(done){
+      assert.deepEqual(pages, [
+        {alpha: 'a', beta: 'b'},
+        {alpha: 'a', beta: 'b'}
+      ])
 
-        var plugin = defaults('./test/content/defaults.json', JSON.parse);
+      done()
+    })
+  })
 
-        plugin([{}, {}], function(err, pages){
+  it('it should not overwrite existing properties', function (done) {
+    var plugin = defaults('./test/content/defaults.json', JSON.parse)
 
-            assert.deepEqual(pages, [
-                {alpha: 'a', beta: 'b'},
-                {alpha: 'a', beta: 'b'}
-            ]);
+    plugin([{alpha: 1}, {alpha: 2}], function (err, pages) {
+      if (err) {
+        throw err
+      }
 
-            done();
-        });
-    });
+      assert.deepEqual(pages, [
+        {alpha: 1, beta: 'b'},
+        {alpha: 2, beta: 'b'}
+      ])
 
-    it('it should not overwrite existing properties', function(done){
-
-        var plugin = defaults('./test/content/defaults.json', JSON.parse);
-
-        plugin([{alpha: 1}, {alpha: 2}], function(err, pages){
-
-            assert.deepEqual(pages, [
-                {alpha: 1, beta: 'b'},
-                {alpha: 2, beta: 'b'},
-            ]);
-
-            done();
-        });
-    });
-});
+      done()
+    })
+  })
+})

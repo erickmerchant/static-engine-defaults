@@ -1,14 +1,8 @@
-var mock = require('mock-fs')
 var assert = require('assert')
 var describe = require('mocha').describe
 var it = require('mocha').it
-var beforeEach = require('mocha').beforeEach
-var plugin = require('./index.js')
-
-beforeEach(function () {
-  mock({
-    './test/content/defaults.json': '{ "alpha": "a", "beta": "b" }'
-  })
+var plugin = mock({
+  './test/content/defaults.json': '{ "alpha": "a", "beta": "b" }'
 })
 
 describe('plugin', function () {
@@ -46,3 +40,16 @@ describe('plugin', function () {
     })
   })
 })
+
+function mock (files) {
+  var rewire = require('rewire')
+  var plugin = rewire('./index.js')
+
+  plugin.__set__('fs', {
+    readFile: function (filename, options, callback) {
+      callback(null, files[filename])
+    }
+  })
+
+  return plugin
+}

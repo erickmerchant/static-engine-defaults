@@ -17,11 +17,13 @@
     "object-assign": "^2.0.0"
   },
   "devDependencies": {
+    "istanbul": "^0.3.13",
     "mocha": "^2.0.0",
     "rewire": "^2.3.1",
     "standard": "^3.5.0"
   },
   "scripts": {
-    "test": "standard && mocha"
+    "test": "standard && mocha",
+    "cover": "istanbul cover node_modules/.bin/_mocha"
   }
 }

@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/erickmerchant/static-engine-defaults",
   "dependencies": {
-    "object-assign": "^2.0.0"
+    "object-assign": "^3.0.0"
   },
   "devDependencies": {
     "istanbul": "^0.3.13",

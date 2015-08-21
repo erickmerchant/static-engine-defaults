@@ -1,5 +1,5 @@
 var fs = require('fs')
-var assign = require('object-assign')
+var assign = require('lodash.assign')
 
 module.exports = function (defaultFile, converter) {
   return function (pages, done) {

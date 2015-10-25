@@ -17,7 +17,7 @@
     "lodash.assign": "^3.2.0"
   },
   "devDependencies": {
-    "istanbul": "^0.3.13",
+    "istanbul": "^0.4.0",
     "mocha": "^2.0.0",
     "rewire": "^2.3.1",
     "standard": "^5.0.0"

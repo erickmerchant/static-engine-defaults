@@ -17,7 +17,7 @@ module.exports = function (defaultFile, converter) {
           })
 
           done(null, pages)
-        } catch(e) {
+        } catch (e) {
           done(e)
         }
       }

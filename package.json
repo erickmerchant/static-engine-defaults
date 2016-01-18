@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/erickmerchant/static-engine-defaults",
   "dependencies": {
-    "lodash.assign": "^3.2.0"
+    "lodash.assign": "^4.0.0"
   },
   "devDependencies": {
     "rewire": "^2.3.1",

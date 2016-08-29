@@ -1,9 +1,9 @@
-var tap = require('tap')
+var test = require('tape')
 var plugin = mock({
   './test/content/defaults.json': '{ "alpha": "a", "beta": "b" }'
 })
 
-tap.test('it should affect all pages', function (t) {
+test('it should affect all pages', function (t) {
   var defaults = plugin('./test/content/defaults.json', JSON.parse)
 
   defaults([{}, {}], function (err, pages) {
@@ -17,7 +17,7 @@ tap.test('it should affect all pages', function (t) {
   })
 })
 
-tap.test('it should not overwrite existing properties', function (t) {
+test('it should not overwrite existing properties', function (t) {
   var defaults = plugin('./test/content/defaults.json', JSON.parse)
 
   defaults([{alpha: 1}, {alpha: 2}], function (err, pages) {
@@ -31,7 +31,7 @@ tap.test('it should not overwrite existing properties', function (t) {
   })
 })
 
-tap.test('it should handle errors from fs.readFile', function (t) {
+test('it should handle errors from fs.readFile', function (t) {
   var plugin = mock({
     './test/content/defaults.json': '{ "alpha": "a", "beta": "b" }'
   }, {
@@ -46,7 +46,7 @@ tap.test('it should handle errors from fs.readFile', function (t) {
   })
 })
 
-tap.test('it should handle errors from the converter', function (t) {
+test('it should handle errors from the converter', function (t) {
   var plugin = mock({
     './test/content/defaults.json': '{ "alpha": "a", "beta": "b" }'
   })
